@@ -43,21 +43,42 @@ func main() {
 	// }
 
 	// var users []User
-	// result := db.Where("first_name = ?", "Leha").Find(&users)
+	// result := db.Find(&users)
 	// if result.Error != nil {
 	// 	fmt.Println(result.Error)
 	// }
-	// fmt.Println(users)
+
+	// for i := range users {
+	// 	users[i].Age += 1
+	// }
+	// result = db.Save(&users)
+	// if result.Error != nil {
+	// 	fmt.Println(result.Error)
+	// }
+
+	// var user User
+	// result := db.First(&user)
+	// if result.Error != nil {
+	// 	fmt.Println(result.Error)
+	// }
+	// user.Age = 31
+	// result = db.Save(&user)
+	// if result.Error != nil {
+	// 	fmt.Println(result.Error)
+	// }
 
 	var user User
 	result := db.First(&user)
 	if result.Error != nil {
 		fmt.Println(result.Error)
 	}
-	user.Age = 31
-	result = db.Save(&user)
+	result = db.Delete(&user)
 	if result.Error != nil {
 		fmt.Println(result.Error)
+	} else if result.RowsAffected == 0 {
+		fmt.Println("No rows affected")
+	} else {
+		fmt.Println("Deleted successfully")
 	}
 	
 
