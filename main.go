@@ -28,4 +28,19 @@ func main() {
 		fmt.Println(err)
 	}
 
+	newUser := User{
+		FirstName: "Serega",
+		LastName: "Seregin",
+		Email: "Serega@mail.ru",
+		Country: "Russia",
+		Age: 30,
+	}
+
+	result := db.Create(&newUser)
+	if result.Error != nil {
+		fmt.Println("error adding Serega", err)
+		return
+	}
+	
+
 }
