@@ -28,22 +28,22 @@ func main() {
 		fmt.Println(err)
 	}
 
-	newUser := User{
-		FirstName: "Leha",
-		LastName:  "Lehin",
-		Email:     "Leha@mail.ru",
-		Country:   "Russia",
-		Age:       29,
-	}
+	// newUser := User{
+	// 	FirstName: "Leha",
+	// 	LastName:  "Lehin",
+	// 	Email:     "Leha@mail.ru",
+	// 	Country:   "Russia",
+	// 	Age:       29,
+	// }
 
-	result := db.Create(&newUser)
-	if result.Error != nil {
-		fmt.Println("error adding leha", result.Error)
-		return
-	}
+	// result := db.Create(&newUser)
+	// if result.Error != nil {
+	// 	fmt.Println("error adding leha", result.Error)
+	// 	return
+	// }
 
 	var users []User
-	result = db.Find(&users)
+	result := db.Where("first_name = 'Leha'").Find(&users)
 	if result.Error != nil {
 		fmt.Println(result.Error)
 	}
