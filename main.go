@@ -30,17 +30,16 @@ func main() {
 
 	newUser := User{
 		FirstName: "Serega",
-		LastName: "Seregin",
-		Email: "Serega@mail.ru",
-		Country: "Russia",
-		Age: 30,
+		LastName:  "Seregin",
+		Email:     "Serega@mail.ru",
+		Country:   "Russia",
+		Age:       30,
 	}
 
 	result := db.Create(&newUser)
 	if result.Error != nil {
-		fmt.Println("error adding Serega", err)
+		fmt.Println("error adding Serega", result.Error)
 		return
 	}
-	
 
 }
