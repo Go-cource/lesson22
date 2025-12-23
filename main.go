@@ -42,11 +42,23 @@ func main() {
 	// 	return
 	// }
 
-	var users []User
-	result := db.Where("first_name = 'Leha'").Find(&users)
+	// var users []User
+	// result := db.Where("first_name = ?", "Leha").Find(&users)
+	// if result.Error != nil {
+	// 	fmt.Println(result.Error)
+	// }
+	// fmt.Println(users)
+
+	var user User
+	result := db.First(&user)
 	if result.Error != nil {
 		fmt.Println(result.Error)
 	}
-	fmt.Println(users)
+	user.Age = 31
+	result = db.Save(&user)
+	if result.Error != nil {
+		fmt.Println(result.Error)
+	}
+	
 
 }
